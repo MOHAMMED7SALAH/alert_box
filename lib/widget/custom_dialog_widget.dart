@@ -17,9 +17,7 @@ class CustomDialogWidget extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: GetBuilder<CheckboxController>(
-              init: CheckboxController(),
-              builder: (controller) => Column(
+            child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -37,15 +35,20 @@ class CustomDialogWidget extends StatelessWidget {
                   SizedBox(height: 12),
                   Row(
                     children: [
-                      Checkbox(
-                        checkColor: Colors.greenAccent,
-                        activeColor: Colors.red,
-                        value: controller.checkbox,
-                        onChanged: (value) {
-                          controller.acceptTerms();
-                          Navigator.of(context).pop();
-                        },
+                      Container(
+                      child: GetBuilder<CheckboxController>(
+                        init: CheckboxController(),
+                        builder: (controller) => Checkbox(
+                          checkColor: Colors.greenAccent,
+                          activeColor: Colors.red,
+                          value: controller.checkbox,
+                          onChanged: (value) {
+                            controller.acceptTerms();
+                            Navigator.of(context).pop();
+                          },
+                        ),
                       ),
+                    ),
                       Text('I agree'),
                     ],
                   ),
@@ -59,7 +62,7 @@ class CustomDialogWidget extends StatelessWidget {
               ),
             ),
           ),
-        ),
+        
         context: context,
         barrierDismissible: false,
       );

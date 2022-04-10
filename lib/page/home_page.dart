@@ -16,9 +16,7 @@ class HomePage extends StatelessWidget {
           centerTitle: true,
         ),
         body: Center(
-          child: GetBuilder<CheckboxController>(
-            init: CheckboxController(),
-            builder: (controller) => Column(
+          child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomDialogWidget(),
@@ -27,7 +25,9 @@ class HomePage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {},
-                  child: Container(
+                  child: GetBuilder<CheckboxController>(
+                    init: CheckboxController(),
+                    builder: (controller) => Container(
                     height:50,
                     width:200,
                       decoration: BoxDecoration(
@@ -39,10 +39,10 @@ class HomePage extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 23,
                       ),))),
-                )
+                )),
               ],
             ),
           ),
-        )),
+        )
   );
 }
